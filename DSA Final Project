@@ -1,0 +1,444 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package dsaprtfl;
+import java.util.*;
+import java.util.Scanner;
+
+
+class Node {
+    int data;
+    Node next;
+    char item;
+Node left, right;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+    public Node(char key) {
+item = key;
+left = right = null;
+}
+}
+class TreeNode {
+    int data;
+    TreeNode left, right;
+
+    public TreeNode(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+class LinkedList {
+    Node head;
+
+    public LinkedList() {
+        this.head = null;
+    }
+
+    // Method to insert a new node at the end of the linked list
+    public void append(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node last = head;
+        while (last.next != null) {
+            last = last.next;
+        }
+
+        last.next = newNode;
+    }
+
+    // Method to print the linked list
+    public void printList(int[] array, int size) {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        for (int i = 0; i < size; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+        System.out.println();
+    }
+}
+class BinaryTree {
+    TreeNode root;
+
+    public BinaryTree() {
+        root = null;
+    }
+        // Method to insert a new node with the given data
+    public void insert(int data) {
+        root = insertRec(root, data);
+    }
+    // Helper method to recursively insert a new node
+    private TreeNode insertRec(TreeNode root, int data) {
+        // If the tree is empty, create a new node and set it as the root
+        if (root == null) {
+            root = new TreeNode(data);
+            return root;
+        }   
+          if (data < root.data) {
+            root.left = insertRec(root.left, data);
+        } else if (data > root.data) {
+            root.right = insertRec(root.right, data);
+        }
+
+        // Return the (unchanged) node pointer
+        return root;
+    }
+      // Method to perform an inorder traversal of the tree
+    public void inorderTraversal() {
+        inorderTraversalRec(root);
+    }
+ private void inorderTraversalRec(TreeNode root) {
+        if (root != null) {
+            inorderTraversalRec(root.left);
+            System.out.print(root.data + " ");
+            inorderTraversalRec(root.right);
+        }
+    }
+}
+class Graph {
+    // Inner class to keep track of edges
+    class Edge {
+        int src, dest;
+    }
+
+    int vertices, edges;
+    Edge[] edge;
+
+    Graph(int vertices, int edges) {
+        this.vertices = vertices;
+        this.edges = edges;
+        // Initialize the edge array
+        edge = new Edge[edges];
+        for (int i = 0; i < edges; i++) {
+            // Each element of the edge array is an object of Edge type
+            edge[i] = new Edge();
+        }
+    }
+}
+ public class DSAprtfl {   
+//list
+private static void display(int[] array, int size) {
+        if (size == 0) {
+            System.out.println("List is empty. Nothing to display.");
+            return;
+        }
+
+        System.out.print("List:");
+        for (int i = 0; i < size; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+//linkedlist
+
+
+
+   //endlinkedlist
+ 
+    private static void exitprog() {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("\n[Y] Exit the program? ");
+        char ch = scan.next().charAt(0);
+        if(ch == 'Y' || ch == 'y') {
+            System.out.print("\nThank you <3 <3");
+            scan.close();
+            System.exit(0);
+        }
+    }
+    //queue
+    public static String encrypt(String plaintext, int k) {
+        StringBuilder encryptedText = new StringBuilder();
+
+        for (int i = 0; i < plaintext.length(); i++) {
+            char currentChar = plaintext.charAt(i);
+
+            if (Character.isLetter(currentChar)) {
+                char encryptedChar = (char) ((currentChar - 'A' + k) % 26 + 'A');
+                encryptedText.append(encryptedChar);
+            } else {
+                encryptedText.append(currentChar);
+            }
+        }
+    
+        return encryptedText.toString();
+    }
+    //Tree
+// root of Tree
+
+// root of Tree
+    String Node;
+Node root;
+
+DSAprtfl() {
+root = null;
+}
+// method to count leaf nodes
+public static int countLeaf(Node node) {
+if(node == null) {
+return 0;
+}
+// if left and right of the node is null
+// it is leaf node
+if (node.left == null && node.right == null) {
+return 1;
+}
+else {
+return countLeaf(node.left) + countLeaf(node.right);
+}
+}
+
+  
+    public static void main(String[] args) {
+        Scanner x = new Scanner(System.in);
+        System.out.println("DSA portfolio\nName:Anthony A. Calooy\nSection:CIS202");
+        System.out.println("Select Data Structure Topic\n[1] List\n[2] Linked List\n[3] Stack\n[4] Queue\n[5] Tree\n[6] Binary Tree\n[7] Graph\n[8] Exit\n");
+        System.out.println("----------------------------------------------------");
+        System.out.print("Select a number: ");
+        int choose = x.nextInt();
+        
+  switch(choose){
+  case 1:
+  System.out.println("You Select Data Structure\n");
+  System.out.println("----------------------------------------------------");
+  int input, Array;
+  int size = 0;
+    int[] intarray = new int[999];
+
+       do {
+           System.out.print("\nLIST OPERATIONS\n");
+           System.out.print("[1] Add\n[2] Display\n[3] Exit\n");
+           System.out.print("Select an operation: ");
+           input = x.nextInt();
+
+           switch (input) {
+           case 1:
+           System.out.print("Enter an integer to add: ");
+           Array = x.nextInt();
+           intarray[size] = Array;
+           size++;
+           System.out.print("Added " + Array + " to the list.\n");
+           break;
+           case 2:
+           display(intarray, size);
+           break;
+           case 3:
+           System.out.println("Thank you");
+           break;
+           default:
+           System.out.println("You Choose a wrong number");
+           }
+           } while(input != 3);
+           exitprog();
+           break;
+  case 2:
+      System.out.println("You Select Linked List");   
+      System.out.println("----------------------------------------------------");
+      LinkedList linkedList = new LinkedList();
+      int linkinput, linkArray;
+      int linksize = 0;
+      int[] linkintarray = new int[999];
+      do{
+      System.out.print("[1] Add\n[2]Display\n Exit\n");
+      System.out.print("Select an operation: ");
+      linkinput = x.nextInt();
+      
+        
+      switch(linkinput){
+        case 1:
+            System.out.print("Enter an integer to add: ");
+           linkArray = x.nextInt();
+           linkintarray[linksize] = linkArray;
+           linksize++;
+           break;
+        case 2:
+            System.out.print("Linked List: ");
+            linkedList.printList(linkintarray, linksize);
+       case 3:
+            System.out.println("Thank you");
+             break;
+       default:
+            System.out.println("You Choose a wrong number");
+            }
+           }while(linkinput != 3);
+             exitprog();
+            break;
+  case 3: 
+      System.out.println("You Select Stack");
+      System.out.println("----------------------------------------------------");
+        Stack<Integer> stack = new Stack<>();
+        int ch;
+            do{
+            System.out.println("STACK OPERATIONS");
+            System.out.println("[1] - Push");
+            System.out.println("[2] - Pop");
+            System.out.println("[3] - Print");
+            System.out.println("[4] - Top");
+           
+            System.out.print("ENTER YOUR CHOICE: ");
+            
+             ch = x.nextInt();
+            
+            switch (ch) {
+                case 1:
+                    System.out.print("ENTER THE ELEMENT TO PUSH: ");
+                    int element = x.nextInt();
+                    stack.push(element);
+                    System.out.println(element + " got pushed onto the stack.");
+                    break;
+                
+                case 2:
+                    if (!stack.isEmpty()) {
+                        int poppedElement = stack.pop();
+                        System.out.println("Popped element: " + poppedElement);
+                    } else {
+                        System.out.println("Stack is empty. Cannot pop.");
+                    }
+                    break;
+                
+                case 3:
+                    if (!stack.isEmpty()) {
+                        System.out.print("Stack: ");
+                        for (Integer item : stack) {
+                            System.out.print(item + " ");
+                        }
+                        System.out.println();
+                    } else {
+                        System.out.println("Stack is empty.");
+                    }
+                    break;
+                
+                case 4:
+                    System.out.println("Top: " + stack.peek());
+                    break;
+              default:
+            System.out.println("You Choose a wrong number");
+            
+            }
+            }while(ch != 3);
+             exitprog();
+            break;
+  case 4:
+      Scanner y = new Scanner(System.in);
+        System.out.println("You Select Queue");
+        String plaintext;
+        System.out.print("Enter the a text: "); // input
+        plaintext = y.nextLine().toUpperCase(); 
+        
+        System.out.print("Enter the value of k: "); // input
+        int k = y.nextInt();
+        
+        System.out.println("----------------------------------------");
+        String ciphertext = encrypt(plaintext, k);
+        System.out.println("Ciphertext: " + ciphertext); // output
+        x.close();
+        break;
+  case 5:    
+        System.out.println("You Choose Tree");
+        DSAprtfl tree = new DSAprtfl();
+        // create nodes of tree
+        tree.root = new Node('p');
+        tree.root.left = new Node('g');
+        tree.root.right = new Node('w');
+        // create child nodes of left child
+        tree.root.left.left = new Node('c');
+        tree.root.left.right = new Node('k');
+        // create child nodes of right child
+        tree.root.right.left = new Node('s');
+        tree.root.right.right = new Node('y');
+        //create child root.left.left.left and root.left.left.right
+        tree.root.left.left.left = new Node('a');
+        tree.root.left.left.right = new Node('e');
+        //create child root.left.right.left and root.left.right.right
+        tree.root.left.right.left = new Node('i');
+        tree.root.left.right.right = new Node('m');
+        //create child root.right.left.left and root.right.left.right.
+        tree.root.right.left.left = new Node('q');
+        tree.root.right.left.right = new Node('u');
+        //create child root.right.right.left and root.right.right.right.
+        tree.root.right.right.left = new Node('x');
+        tree.root.right.right.right = new Node('z');
+        // call method to count leaf nodes
+        int leafNodes = countLeaf(tree.root);
+        System.out.println("Total Leaf Nodes = " + leafNodes);
+        break;
+  case 6:
+        System.out.println("You Choose Binary Tree");
+        BinaryTree binary = new BinaryTree();
+        // Insert some nodes
+        binary.insert(50);
+        binary.insert(30);
+        binary.insert(20);
+        binary.insert(40);
+        binary.insert(70);
+        binary.insert(60);
+        binary.insert(80);
+
+        // Perform inorder traversal
+        System.out.println("Inorder traversal:");
+        binary.inorderTraversal(); 
+        break;
+  case 7:
+       System.out.println("You Choose Graph");
+       System.out.println("Verices: 12\nEdges: 13");
+        // Create an object of Graph
+        int noVertices = 10;
+        int noEdges = 13;
+        Graph g = new Graph(noVertices, noEdges);
+        System.out.println("Anthony A. Calooy\nBSIS202");
+        // Create graph
+        g.edge[0].src = 1; // edge 1---2
+        g.edge[0].dest = 2;
+        g.edge[1].src = 1; // edge 1---3
+        g.edge[1].dest = 3;
+        g.edge[2].src = 1; // edge 1---4
+        g.edge[2].dest = 4;
+        g.edge[3].src = 2; // edge 2---4
+        g.edge[3].dest = 4;
+        g.edge[4].src = 2; // edge 2---5
+        g.edge[4].dest = 5;
+        g.edge[5].src = 3; // edge 3---4
+        g.edge[5].dest = 4;
+        g.edge[6].src = 3; // edge 3---5
+        g.edge[6].dest = 5;
+        g.edge[7].src = 4; // edge 4---5
+        g.edge[7].dest = 5;
+        g.edge[8].src = 4; // edge 4---5
+        g.edge[8].dest = 9;
+        g.edge[9].src = 4; // edge 4---5
+        g.edge[9].dest = 6;
+        g.edge[10].src = 5; // edge 4---5
+        g.edge[10].dest = 7;
+        g.edge[11].src = 8; // edge 4---5
+        g.edge[11].dest = 7;
+        g.edge[12].src = 6; // edge 4---5
+        g.edge[12].dest = 10;
+        // Print graph
+        for (int i = 0; i < noEdges; i++) {
+            System.out.println(g.edge[i].src + " - " + g.edge[i].dest);
+        }
+        break;
+    
+  case 8:
+         System.out.println("Thank you!!!!!!!!! <3 ");
+         break;
+  default:
+                System.out.println("You Choose a wrong number");
+        } 
+        
+    }
+            
+ }  
+
+
